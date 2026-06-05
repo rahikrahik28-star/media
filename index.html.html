@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>OUR MEDIA - الحقيقة بين يديك</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#8B0000;--red2:#B22222;--red3:#CC0000;
+  --dark:#150000;--white:#fff;
+  --gray:#f4f4f4;--gray2:#dedede;
+  --text:#1a1a1a;--text2:#666;
+  --font:'Cairo',sans-serif;--serif:'Amiri',serif;
+}
+body{font-family:var(--font);background:var(--gray);color:var(--text);direction:rtl;min-height:100vh}
+button,input,select,textarea{font-family:var(--font)}
+a{text-decoration:none;color:inherit}
+.hidden{display:none!important}
+
+/* ===== NAVBAR ===== */
+.nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.97);border-bottom:2.5px solid var(--red);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;height:60px;box-shadow:0 2px 18px rgba(139,0,0,0.1)}
+.nav-logo{display:flex;align-items:center;gap:.5rem;cursor:pointer;user-select:none}
+.nav-m{font-size:1.6rem;line-height:1}
+.nav-brand{font-family:var(--serif);font-size:1.15rem;font-weight:700;color:var(--red);letter-spacing:1px;line-height:1.1}
+.nav-slogan{font-size:.6rem;color:var(--text2);display:block}
+.nav-center{display:flex;gap:.75rem;align-items:center}
+.nl{background:none;border:none;border-bottom:2px solid transparent;color:var(--text);font-weight:600;font-size:.87rem;padding:.3rem .45rem;cursor:pointer;transition:all .2s}
+.nl:hover,.nl.active{color:var(--red);border-bottom-color:var(--red)}
+.nav-right{display:flex;align-items:center;gap:.5rem}
+.uname{font-weight:700;color:var(--red);font-size:.87rem;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn-p{background:var(--red);color:#fff;padding:.42rem 1.05rem;border-radius:6px;font-weight:700;font-size:.82rem;border:none;cursor:pointer;transition:background .2s}
+.btn-p:hover{background:var(--red3)}
+.btn-g{background:transparent;color:var(--text);padding:.42rem .9rem;border-radius:6px;font-weight:600;font-size:.82rem;border:1.5px solid var(--gray2);cursor:pointer;transition:all .2s}
+.btn-g:hover{border-color:var(--red);color:var(--red)}
+.btn-sm{background:var(--red);color:#fff;padding:.35rem .8rem;border-radius:5px;font-size:.78rem;font-weight:700;border:none;cursor:pointer}
+
+/* ===== PAGES ===== */
+.page{display:none}
+.page.on{display:block}
+#pg-home.on{display:flex;flex-direction:column;min-height:calc(100vh - 60px)}
+
+/* ===== HERO ===== */
+.hero{
+  flex:1;
+  background:
+    linear-gradient(135deg,rgba(100,0,0,0.91) 0%,rgba(20,0,0,0.97) 100%),
+    url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1400&q=75') center/cover no-repeat;
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:3rem 1.5rem;
+}
+.hero-inner{animation:fadeUp .7s ease;max-width:700px}
+.hero-logo-row{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-bottom:.4rem}
+.hero-icon{font-size:2.2rem;line-height:1}
+.hero-brand{font-family:var(--serif);font-size:1.6rem;color:#fff;letter-spacing:3px;font-weight:700}
+.hero-slogan{font-size:.82rem;color:rgba(255,255,255,0.6);margin:.25rem 0 .5rem}
+.hero-sep{width:55px;height:2.5px;background:var(--red2);margin:.5rem auto 1.8rem}
+.hero-title{font-size:clamp(2rem,5.5vw,4.2rem);font-weight:900;color:#fff;line-height:1.2;margin-bottom:2rem;text-shadow:0 3px 20px rgba(0,0,0,0.5)}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.hb1{background:var(--red);color:#fff;padding:.88rem 2.1rem;border-radius:8px;font-size:.97rem;font-weight:700;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(139,0,0,0.5);transition:all .3s}
+.hb1:hover{background:var(--red3);transform:translateY(-2px);box-shadow:0 7px 28px rgba(139,0,0,0.55)}
+.hb2{background:transparent;color:#fff;padding:.88rem 2.1rem;border-radius:8px;font-size:.97rem;font-weight:700;border:2px solid rgba(255,255,255,0.55);cursor:pointer;transition:all .3s}
+.hb2:hover{background:rgba(255,255,255,0.12);transform:translateY(-2px)}
+
+/* ===== FEATURES ===== */
+.feats{background:var(--gray);padding:3.5rem 1.5rem}
+.feats-inner{max-width:980px;margin:0 auto}
+.sec-title{text-align:center;font-size:1.65rem;font-weight:900;color:var(--red);margin-bottom:2rem}
+.sec-title::after{content:'';display:block;width:48px;height:3px;background:var(--red);margin:.55rem auto 0}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.3rem}
+.feat-card{background:#fff;border-radius:12px;padding:1.6rem;text-align:center;box-shadow:0 3px 14px rgba(0,0,0,0.06);border-top:4px solid var(--red);transition:transform .3s}
+.feat-card:hover{transform:translateY(-4px)}
+.feat-icon{font-size:2.1rem;margin-bottom:.7rem}
+.feat-card h3{font-size:.96rem;font-weight:700;color:var(--red);margin-bottom:.4rem}
+.feat-card p{color:var(--text2);line-height:1.65;font-size:.84rem}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--dark);color:rgba(255,255,255,0.45);text-align:center;padding:1.1rem;font-size:.78rem}
+
+/* ===== AUTH ===== */
+.auth-wrap{min-height:calc(100vh - 60px);background:var(--gray);display:flex;align-items:center;justify-content:center;padding:2rem 1rem}
+.auth-card{background:#fff;border-radius:16px;padding:2.3rem;width:100%;max-width:440px;box-shadow:0 8px 32px rgba(0,0,0,0.09);text-align:center}
+.auth-hdr-icon{font-size:1.5rem;margin-bottom:.3rem}
+.auth-brand{font-family:var(--serif);font-size:1.2rem;color:var(--red);font-weight:700}
+.auth-title{font-size:1.4rem;font-weight:900;margin:1rem 0 .25rem}
+.auth-sub{color:var(--text2);font-size:.84rem;margin-bottom:1.6rem}
+.fg{margin-bottom:1.05rem;text-align:right}
+.fg label{display:block;font-weight:700;font-size:.82rem;margin-bottom:.32rem;color:var(--text)}
+.fi{width:100%;padding:.67rem .9rem;border:1.5px solid var(--gray2);border-radius:8px;font-size:.88rem;direction:rtl;transition:border-color .2s;color:var(--text);background:#fff}
+.fi:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(139,0,0,0.08)}
+.btn-sub{width:100%;background:var(--red);color:#fff;padding:.78rem;border:none;border-radius:8px;font-size:.93rem;font-weight:700;cursor:pointer;transition:background .2s,transform .15s;margin-top:.4rem}
+.btn-sub:hover{background:var(--red3);transform:translateY(-1px)}
+.btn-sub:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.sw{margin-top:1.15rem;font-size:.84rem;color:var(--text2)}
+.sw span{color:var(--red);font-weight:700;cursor:pointer}
+.sw span:hover{text-decoration:underline}
+.msg-err{background:#fff0f0;color:var(--red);border:1px solid #ffcccc;border-radius:8px;padding:.6rem .9rem;font-size:.83rem;margin-bottom:.85rem;display:none;text-align:right}
+.msg-ok{background:#f0fff4;color:#166534;border:1px solid #bbf7d0;border-radius:8px;padding:.6rem .9rem;font-size:.83rem;margin-bottom:.85rem;display:none;text-align:right}
+
+/* ===== FEED ===== */
+.feed-wrap{max-width:1080px;margin:0 auto;padding:1.5rem}
+.feed-hdr{margin-bottom:1.2rem}
+.feed-hdr h1{font-size:1.7rem;font-weight:900;color:var(--red)}
+.feed-hdr p{color:var(--text2);font-size:.82rem;margin-top:.15rem}
+.search-row{display:flex;gap:.5rem;margin-bottom:1rem;max-width:500px}
+.si{flex:1;padding:.62rem .9rem;border:1.5px solid var(--gray2);border-radius:8px;font-size:.88rem;direction:rtl;background:#fff;color:var(--text)}
+.si:focus{outline:none;border-color:var(--red)}
+.cats{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.cb{padding:.4rem 1rem;border-radius:25px;border:1.5px solid var(--gray2);background:#fff;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--text)}
+.cb:hover{border-color:var(--red);color:var(--red)}
+.cb.on{background:var(--red);color:#fff;border-color:var(--red)}
+.art-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:1.25rem}
+.ac{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.07);transition:transform .3s,box-shadow .3s;cursor:pointer}
+.ac:hover{transform:translateY(-4px);box-shadow:0 8px 22px rgba(0,0,0,0.11)}
+.ac-img{width:100%;height:162px;object-fit:cover;display:block;background:linear-gradient(135deg,var(--dark),var(--red));display:flex;align-items:center;justify-content:center;font-size:2.6rem;flex-shrink:0}
+.ac-img img{width:100%;height:100%;object-fit:cover;display:block}
+.ac-body{padding:1rem}
+.ac-top{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem}
+.ac-cat{background:var(--red);color:#fff;padding:.15rem .6rem;border-radius:20px;font-size:.7rem;font-weight:700}
+.ai-b{font-size:.68rem;font-weight:700;padding:.12rem .5rem;border-radius:10px}
+.ai-ok{background:#dcfce7;color:#166534}
+.ai-mid{background:#fef3c7;color:#92400e}
+.ai-no{background:#f3f4f6;color:#6b7280}
+.ac-title{font-size:.91rem;font-weight:700;margin-bottom:.35rem;line-height:1.45;color:var(--text)}
+.ac-ex{font-size:.8rem;color:var(--text2);line-height:1.55;margin-bottom:.5rem}
+.ac-meta{font-size:.74rem;color:var(--text2);display:flex;gap:.45rem;align-items:center;flex-wrap:wrap}
+.ac-author{font-weight:700;color:var(--red)}
+.no-items{text-align:center;padding:2.5rem;color:var(--text2);grid-column:1/-1;font-size:.93rem}
+
+/* ===== ARTICLE DETAIL ===== */
+.art-wrap{max-width:740px;margin:0 auto;padding:1.5rem}
+.back-btn{display:inline-flex;align-items:center;gap:.35rem;color:var(--red);font-weight:700;font-size:.85rem;cursor:pointer;margin-bottom:1.3rem;background:none;border:none;padding:0}
+.back-btn:hover{text-decoration:underline}
+.ad-cat{display:inline-block;border:1.5px solid var(--red);color:var(--red);padding:.22rem .82rem;border-radius:20px;font-size:.78rem;font-weight:700;margin-bottom:1rem}
+.ad-title{font-size:clamp(1.6rem,4vw,2.7rem);font-weight:900;line-height:1.25;margin-bottom:.78rem;font-family:var(--serif);color:var(--text)}
+.ad-ex{font-size:.96rem;color:var(--text2);border-right:3px solid var(--red);padding-right:.85rem;margin-bottom:1.1rem;line-height:1.65}
+.ad-meta{display:flex;gap:.75rem;align-items:center;padding:.78rem 0;border-top:1px solid var(--gray2);border-bottom:1px solid var(--gray2);margin-bottom:1.5rem;font-size:.82rem;color:var(--text2);flex-wrap:wrap}
+.ad-author{font-weight:700;color:var(--red)}
+.ad-hero-wrap{width:100%;height:320px;border-radius:10px;margin-bottom:1.5rem;overflow:hidden;background:linear-gradient(135deg,var(--dark),var(--red));display:flex;align-items:center;justify-content:center;font-size:5rem}
+.ad-hero-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.ai-box{border-radius:10px;padding:.9rem 1.1rem;margin-bottom:1.3rem;border:1.5px solid}
+.ai-box-ok{background:#f0fff4;border-color:#bbf7d0}
+.ai-box-mid{background:#fefce8;border-color:#fde68a}
+.ai-box-low{background:#fff1f2;border-color:#fecdd3}
+.ai-box-none{background:#f8faff;border-color:#bfdbfe}
+.ai-box-hdr{font-weight:700;font-size:.85rem;margin-bottom:.3rem;display:flex;align-items:center;gap:.35rem}
+.ai-box-score{font-size:1.3rem;font-weight:900}
+.ai-box-note{font-size:.8rem;margin-top:.25rem;color:var(--text2)}
+.ad-content{font-size:.98rem;line-height:1.95;white-space:pre-wrap;color:var(--text)}
+
+/* ===== DASHBOARD ===== */
+.dash-wrap{max-width:980px;margin:0 auto;padding:1.5rem}
+.dash-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:.75rem}
+.dash-top h1{font-size:1.7rem;font-weight:900;color:var(--red)}
+.dash-top p{color:var(--text2);font-size:.82rem;margin-top:.15rem}
+.db-note{background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:.65rem 1rem;font-size:.8rem;color:#7c5300;margin-bottom:1.2rem;display:flex;align-items:center;gap:.45rem}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1rem;margin-bottom:1.5rem}
+.sc{background:#fff;border-radius:10px;padding:1.2rem;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.06);border-top:3px solid var(--red)}
+.sc-n{font-size:2rem;font-weight:900;color:var(--red)}
+.sc-l{font-size:.8rem;color:var(--text2);font-weight:600;margin-top:.1rem}
+.dt{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);overflow:hidden}
+.dt-hdr{padding:1rem 1.25rem;border-bottom:1px solid var(--gray2);font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:space-between}
+.art-row{padding:.82rem 1.25rem;border-bottom:1px solid var(--gray);display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap;transition:background .15s}
+.art-row:hover{background:var(--gray)}
+.art-row:last-child{border-bottom:none}
+.art-row-info{flex:1;min-width:150px}
+.art-row-t{font-weight:700;font-size:.86rem;margin-bottom:.15rem;color:var(--text)}
+.art-row-m{font-size:.74rem;color:var(--text2)}
+.art-row-acts{display:flex;gap:.4rem;flex-shrink:0}
+.btn-edit{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;padding:.32rem .72rem;border-radius:5px;font-size:.75rem;font-weight:700;cursor:pointer;transition:background .15s}
+.btn-edit:hover{background:#dbeafe}
+.btn-del{background:#fff1f2;color:#be123c;border:1px solid #fecdd3;padding:.32rem .72rem;border-radius:5px;font-size:.75rem;font-weight:700;cursor:pointer;transition:background .15s}
+.btn-del:hover{background:#ffe4e6}
+
+/* ===== PROFILE ===== */
+.prof-wrap{max-width:600px;margin:0 auto;padding:1.5rem}
+.prof-wrap h1{font-size:1.7rem;font-weight:900;color:var(--red);margin-bottom:1.2rem}
+.prof-card{background:#fff;border-radius:12px;padding:1.75rem;box-shadow:0 4px 16px rgba(0,0,0,0.07)}
+.prof-card-title{font-size:1.1rem;font-weight:900;margin-bottom:.2rem}
+.prof-card-sub{font-size:.8rem;color:var(--text2);margin-bottom:1.1rem}
+.pinfo{background:var(--gray);border-radius:8px;padding:.85rem 1rem;display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1.15rem}
+.pinfo-item label{font-size:.73rem;color:var(--text2);display:block;margin-bottom:.18rem;font-weight:600}
+.pinfo-item span{font-weight:700;font-size:.88rem}
+.rbadge{display:inline-block;color:#fff;padding:.13rem .65rem;border-radius:20px;font-size:.73rem;font-weight:700}
+.rbadge-j{background:var(--red)}
+.rbadge-v{background:#6b7280}
+.slbl{font-weight:700;font-size:.88rem;margin-bottom:.5rem}
+.rsel{width:100%;padding:.64rem .9rem;border:1.5px solid var(--gray2);border-radius:8px;font-size:.88rem;direction:rtl;background:#fff;cursor:pointer;margin-bottom:.38rem;color:var(--text)}
+.rsel:focus{outline:none;border-color:var(--red)}
+.rhint{font-size:.76rem;color:var(--text2);margin-bottom:1.1rem}
+
+/* ===== MODAL ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.58);z-index:500;display:flex;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(3px)}
+.modal-box{background:#fff;border-radius:14px;width:100%;max-width:590px;max-height:88vh;overflow-y:auto;box-shadow:0 18px 50px rgba(0,0,0,0.25)}
+.modal-hdr{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.25rem 0;margin-bottom:1.1rem}
+.modal-hdr-title{font-size:1.15rem;font-weight:900}
+.modal-cls{background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--text2);line-height:1;padding:.2rem}
+.modal-body{padding:0 1.25rem 1.25rem}
+.ai-verify-sec{background:#f0f5ff;border:1.5px solid #c7d7fe;border-radius:10px;padding:.88rem 1.1rem;margin-bottom:1.1rem;text-align:center}
+.ai-verify-title{font-weight:700;color:#1e3a8a;font-size:.83rem;margin-bottom:.3rem}
+.ai-verify-sub{font-size:.76rem;color:#3b5bdb;margin-bottom:.38rem}
+.btn-verify{background:#1e3a8a;color:#fff;border:none;padding:.52rem 1.35rem;border-radius:7px;font-size:.83rem;font-weight:700;cursor:pointer;transition:background .2s}
+.btn-verify:hover{background:#1d4ed8}
+.btn-verify:disabled{opacity:.6;cursor:not-allowed}
+.vres{margin-top:.62rem;font-size:.8rem;line-height:1.5;border-radius:7px;padding:.52rem .85rem;display:none}
+
+/* ===== SPINNER / ANIM ===== */
+.spin{display:inline-block;width:17px;height:17px;border:2.5px solid rgba(139,0,0,0.2);border-top-color:var(--red);border-radius:50%;animation:sp .7s linear infinite;vertical-align:middle;margin-left:.35rem}
+.spin-w{border-color:rgba(255,255,255,0.3);border-top-color:#fff}
+@keyframes sp{to{transform:rotate(360deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:540px){
+  .hero-btns{flex-direction:column;align-items:center}
+  .hb1,.hb2{width:100%;max-width:270px}
+  .pinfo{grid-template-columns:1fr}
+  .nav-center{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ====== NAVBAR ====== -->
+<nav class="nav">
+  <div class="nav-logo" onclick="goHome()">
+    <span class="nav-m">🎙📰</span>
+    <div>
+      <span class="nav-brand">OUR MEDIA</span>
+      <span class="nav-slogan">الحقيقة بين يديك</span>
+    </div>
+  </div>
+
+  <div class="nav-center">
+    <button class="nl" id="nl-news" onclick="showFeed()">الأخبار</button>
+    <button class="nl hidden" id="nl-dash" onclick="showDash()">لوحة التحكم</button>
+  </div>
+
+  <div class="nav-right" id="nav-auth">
+    <button class="btn-g" onclick="showSignin()">تسجيل الدخول</button>
+    <button class="btn-p" onclick="showSignup()">إنشاء حساب</button>
+  </div>
+  <div class="nav-right hidden" id="nav-user">
+    <span class="uname" id="nav-uname"></span>
+    <button class="btn-g" onclick="showProfile()">ملفي</button>
+    <button class="btn-g" onclick="doLogout()">خروج</button>
+  </div>
+</nav>
+
+<!-- ====== HOME ====== -->
+<div id="pg-home" class="page on">
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-logo-row">
+        <span class="hero-icon">🎙📰</span>
+        <span class="hero-brand">OUR MEDIA</span>
+      </div>
+      <div class="hero-slogan">الحقيقة بين يديك</div>
+      <div class="hero-sep"></div>
+      <h1 class="hero-title">الحقيقة بين يديك</h1>
+      <div class="hero-btns">
+        <button class="hb1" onclick="showFeed()">تصفح الأخبار</button>
+        <button class="hb2" onclick="showSignup()">انضم إلينا</button>
+      </div>
+    </div>
+  </section>
+  <section class="feats">
+    <div class="feats-inner">
+      <h2 class="sec-title">لماذا OUR MEDIA؟</h2>
+      <div class="feat-grid">
+        <div class="feat-card">
+          <div class="feat-icon">🤖</div>
+          <h3>التحقق بالذكاء الاصطناعي</h3>
+          <p>كل مقال يُفحص بتقنية Claude AI قبل النشر لضمان دقة المعلومات وموثوقيتها</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">💾</div>
+          <h3>حفظ البيانات محلياً</h3>
+          <p>حساباتك ومقالاتك محفوظة في متصفحك — لا تحتاج إلى خادم خارجي</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">📊</div>
+          <h3>تنوع التصنيفات</h3>
+          <p>سياسة، رياضة، ثقافة، تكنولوجيا، اقتصاد — كل ما يهمك في مكان واحد</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">© OUR MEDIA 2026 — الحقيقة بين يديك. جميع الحقوق محفوظة.</footer>
+</div>
+
+<!-- ====== SIGN UP ====== -->
+<div id="pg-signup" class="page">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-hdr-icon">🎙📰</div>
+      <div class="auth-brand">OUR MEDIA</div>
+      <div class="auth-title">إنشاء حساب جديد</div>
+      <div class="auth-sub">الحقيقة بين يديك</div>
+      <div class="msg-err" id="su-err"></div>
+      <div class="fg"><label>الاسم الكامل</label><input class="fi" id="su-name" type="text" placeholder="أدخل اسمك الكامل"></div>
+      <div class="fg"><label>البريد الإلكتروني</label><input class="fi" id="su-email" type="email" placeholder="example@email.com" dir="ltr"></div>
+      <div class="fg"><label>كلمة المرور</label><input class="fi" id="su-pass" type="password" placeholder="6 أحرف على الأقل" dir="ltr"></div>
+      <button class="btn-sub" id="su-btn" onclick="doSignup()">إنشاء الحساب</button>
+      <div class="sw">لديك حساب؟ <span onclick="showSignin()">تسجيل الدخول</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SIGN IN ====== -->
+<div id="pg-signin" class="page">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-hdr-icon">🎙📰</div>
+      <div class="auth-brand">OUR MEDIA</div>
+      <div class="auth-title">مرحباً بعودتك</div>
+      <div class="auth-sub">سجّل دخولك للمتابعة</div>
+      <div class="msg-err" id="si-err"></div>
+      <div class="fg"><label>البريد الإلكتروني</label><input class="fi" id="si-email" type="email" placeholder="example@email.com" dir="ltr"></div>
+      <div class="fg"><label>كلمة المرور</label><input class="fi" id="si-pass" type="password" placeholder="كلمة المرور" dir="ltr"></div>
+      <button class="btn-sub" id="si-btn" onclick="doSignin()">تسجيل الدخول</button>
+      <div class="sw">ليس لديك حساب؟ <span onclick="showSignup()">إنشاء حساب جديد</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== FEED ====== -->
+<div id="pg-feed" class="page">
+  <div class="feed-wrap">
+    <div class="feed-hdr">
+      <h1>الأخبار</h1>
+      <p>تصفح أحدث الأخبار والمقالات</p>
+    </div>
+    <div class="search-row">
+      <input class="si" id="search-q" type="text" placeholder="...ابحث عن مقال" oninput="renderFeed()">
+    </div>
+    <div class="cats" id="cats-bar">
+      <button class="cb on" data-c="الكل" onclick="setCat(this)">الكل</button>
+      <button class="cb" data-c="سياسة" onclick="setCat(this)">سياسة</button>
+      <button class="cb" data-c="رياضة" onclick="setCat(this)">رياضة</button>
+      <button class="cb" data-c="ثقافة" onclick="setCat(this)">ثقافة</button>
+      <button class="cb" data-c="تكنولوجيا" onclick="setCat(this)">تكنولوجيا</button>
+      <button class="cb" data-c="اقتصاد" onclick="setCat(this)">اقتصاد</button>
+    </div>
+    <div class="art-grid" id="art-grid"></div>
+  </div>
+</div>
+
+<!-- ====== ARTICLE ====== -->
+<div id="pg-article" class="page">
+  <div class="art-wrap">
+    <div id="art-detail"></div>
+  </div>
+</div>
+
+<!-- ====== DASHBOARD ====== -->
+<div id="pg-dash" class="page">
+  <div class="dash-wrap">
+    <div class="dash-top">
+      <div>
+        <h1>لوحة التحكم</h1>
+        <p>إدارة مقالاتك ومتابعة الإحصائيات</p>
+      </div>
+      <button class="btn-p" onclick="openNewModal()">+ مقال جديد</button>
+    </div>
+    <div class="db-note">
+      💾 البيانات محفوظة في متصفحك (localStorage) — تبقى حتى بعد إغلاق المتصفح على نفس الجهاز
+    </div>
+    <div class="stats-row" id="dash-stats"></div>
+    <div class="dt">
+      <div class="dt-hdr"><span>مقالاتي</span></div>
+      <div id="dash-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== PROFILE ====== -->
+<div id="pg-profile" class="page">
+  <div class="prof-wrap">
+    <h1>الملف الشخصي</h1>
+    <div class="prof-card">
+      <div class="prof-card-title">المعلومات الشخصية</div>
+      <div class="prof-card-sub">قم بإدارة دورك في المنصة والنبذة التعريفية الخاصة بك</div>
+      <div class="pinfo" id="prof-info"></div>
+      <div class="slbl">الدور في المنصة</div>
+      <select class="rsel" id="role-sel">
+        <option value="visitor">زائر — قراءة الأخبار فقط</option>
+        <option value="journalist">إعلامي — نشر وإدارة المقالات</option>
+      </select>
+      <div class="rhint">الإعلاميون يمكنهم نشر وتعديل مقالاتهم الخاصة.</div>
+      <div class="msg-ok" id="prof-ok"></div>
+      <button class="btn-sub" onclick="saveProfile()">حفظ التغييرات</button>
+    </div>
+  </div>
+</div>
+
+<!-- ====== MODAL: NEW / EDIT ARTICLE ====== -->
+<div class="modal-overlay hidden" id="art-modal">
+  <div class="modal-box">
+    <div class="modal-hdr">
+      <div class="modal-hdr-title" id="modal-title-txt">إنشاء مقال جديد</div>
+      <button class="modal-cls" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="msg-err" id="m-err"></div>
+
+      <!-- AI VERIFY -->
+      <div class="ai-verify-sec">
+        <div class="ai-verify-title">🤖 التحقق بالذكاء الاصطناعي قبل النشر</div>
+        <div class="ai-verify-sub">تحقق من موثوقية المحتوى باستخدام Claude AI قبل النشر</div>
+        <button class="btn-verify" id="vbtn" onclick="runVerify()">🔍 فحص المحتوى</button>
+        <div class="vres" id="vres"></div>
+      </div>
+
+      <div class="fg"><label>العنوان *</label><input class="fi" id="m-title" type="text" placeholder="عنوان المقال"></div>
+      <div class="fg"><label>الملخص *</label><textarea class="fi" id="m-excerpt" rows="2" placeholder="ملخص قصير للمقال" style="resize:vertical"></textarea></div>
+      <div class="fg">
+        <label>التصنيف *</label>
+        <select class="fi" id="m-cat">
+          <option value="سياسة">سياسة</option>
+          <option value="رياضة">رياضة</option>
+          <option value="ثقافة">ثقافة</option>
+          <option value="تكنولوجيا">تكنولوجيا</option>
+          <option value="اقتصاد">اقتصاد</option>
+        </select>
+      </div>
+      <div class="fg"><label>رابط الصورة (اختياري)</label><input class="fi" id="m-img" type="url" placeholder="https://..." dir="ltr"></div>
+      <div class="fg"><label>المحتوى *</label><textarea class="fi" id="m-content" rows="7" placeholder="اكتب نص المقال هنا..." style="resize:vertical"></textarea></div>
+      <button class="btn-sub" id="m-submit-btn" onclick="submitArticle()">نشر المقال</button>
+    </div>
+  </div>
+</div>
+
+<!-- ====== JAVASCRIPT ====== -->
+<script>
+// ==================== CONFIG ====================
+const KEYS = {
+  users:    'om_users_v1',
+  articles: 'om_articles_v1',
+  session:  'om_session_v1'
+};
+
+// ==================== STORAGE ====================
+function lsGet(k){ try{ return JSON.parse(localStorage.getItem(k)||'null'); }catch(e){ return null; } }
+function lsSet(k,v){ localStorage.setItem(k, JSON.stringify(v)); }
+
+function getUsers()    { return lsGet(KEYS.users)    || []; }
+function getArticles() { return lsGet(KEYS.articles) || []; }
+function saveUsers(u)    { lsSet(KEYS.users, u); }
+function saveArticles(a) { lsSet(KEYS.articles, a); }
+
+function getCurrentUser(){
+  const id = localStorage.getItem(KEYS.session);
+  if(!id) return null;
+  return getUsers().find(u => u.id === id) || null;
+}
+function setSession(uid){ localStorage.setItem(KEYS.session, uid||''); }
+function updateUserInDB(upd){
+  const users = getUsers();
+  const i = users.findIndex(u => u.id === upd.id);
+  if(i !== -1){ users[i] = upd; saveUsers(users); }
+}
+
+// ==================== SEED DEMO DATA ====================
+function seedIfEmpty(){
+  if(getArticles().length > 0) return;
+  saveArticles([
+    {
+      id:'demo_1',
+      title:'الجزائر تحتفل بالذكرى الثامنة والستين لاستقلالها',
+      excerpt:'احتفلت الجزائر بذكرى استقلالها في أجواء وطنية بهيجة مع عروض عسكرية وفعاليات ثقافية',
+      category:'سياسة',
+      imageUrl:'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=75',
+      content:'احتفلت الجزائر اليوم بالذكرى الثامنة والستين لاستقلالها الوطني في أجواء وطنية بهيجة، حيث نُظمت عروض عسكرية ضخمة وفعاليات ثقافية متنوعة في مختلف أرجاء الوطن.\n\nوأكد رئيس الجمهورية في كلمته بالمناسبة أن الجزائر ماضية قُدُمًا في مسار البناء والتنمية، مشيراً إلى المنجزات التي تحققت خلال السنوات الأخيرة في مختلف القطاعات الحيوية.\n\nوعبّر المواطنون في مختلف الولايات عن فرحتهم بهذه الذكرى الوطنية العزيزة.',
+      authorId:'system', authorName:'قسم التحرير',
+      views:142, aiVerified:true, aiScore:92,
+      aiNote:'المحتوى موثوق ويتوافق مع الأحداث الوطنية الموثقة.',
+      createdAt: new Date(Date.now()-1*86400000).toISOString()
+    },
+    {
+      id:'demo_2',
+      title:'فريق اتحاد العاصمة يفوز بكأس الجزائر لكرة القدم',
+      excerpt:'حسم اتحاد العاصمة نهائي كأس الجزائر بفوز مثير أمام منافسه الشباب الرياضي',
+      category:'رياضة',
+      imageUrl:'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=75',
+      content:'أحرز فريق اتحاد العاصمة لقب كأس الجزائر لكرة القدم بعد مباراة نهائية مثيرة أمام منافسه الشباب الرياضي البليدي.\n\nجاء هدف الفوز الحاسم في الدقيقة التسعين عبر ركلة جزاء أثارت جدلاً واسعاً في الأوساط الرياضية.\n\nوبهذا الفوز يضم الفريق لقبه الجديد إلى رصيده من الألقاب، معززاً مكانته في كرة القدم الجزائرية.',
+      authorId:'system', authorName:'قسم الرياضة',
+      views:89, aiVerified:true, aiScore:86,
+      aiNote:'محتوى رياضي موثوق وواضح.',
+      createdAt: new Date(Date.now()-2*86400000).toISOString()
+    },
+    {
+      id:'demo_3',
+      title:'باحثون جزائريون يطورون خوارزمية في الذكاء الاصطناعي',
+      excerpt:'فريق من جامعة هواري بومدين يحقق إنجازاً في معالجة اللغة العربية',
+      category:'تكنولوجيا',
+      imageUrl:'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=75',
+      content:'أعلن فريق من الباحثين الجزائريين في جامعة هواري بومدين للعلوم والتكنولوجيا عن تطوير خوارزمية متقدمة لمعالجة اللغة العربية بتقنية الذكاء الاصطناعي.\n\nوأشار رئيس الفريق البحثي إلى أن هذه الخوارزمية تتفوق على نظيراتها في دقة الترجمة والفهم السياقي للهجات العربية المختلفة.\n\nيُعدّ هذا الإنجاز قفزة نوعية في مجال تكنولوجيا اللغة على المستوى العربي.',
+      authorId:'system', authorName:'قسم التكنولوجيا',
+      views:234, aiVerified:false, aiScore:71,
+      aiNote:'المحتوى يحتاج مصادر إضافية للتحقق الكامل.',
+      createdAt: new Date(Date.now()-3*86400000).toISOString()
+    },
+    {
+      id:'demo_4',
+      title:'ارتفاع ملحوظ في أسعار النفط بالأسواق العالمية',
+      excerpt:'النفط يسجل ارتفاعاً ملحوظاً وسط توترات جيوسياسية تؤثر على سلاسل الإمداد',
+      category:'اقتصاد',
+      imageUrl:'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=75',
+      content:'سجّلت أسعار النفط الخام ارتفاعاً ملحوظاً في الأسواق العالمية خلال الساعات الأخيرة، في ظل توترات جيوسياسية متصاعدة تؤثر على سلاسل الإمداد العالمية.\n\nبلغ سعر برميل خام برنت ما يزيد عن 85 دولاراً للبرميل، في حين تجاوز خام تكساس الوسيط 83 دولاراً.\n\nينعكس هذا الارتفاع إيجابياً على عائدات الجزائر النفطية التي تمثل الركيزة الأساسية للاقتصاد الوطني.',
+      authorId:'system', authorName:'قسم الاقتصاد',
+      views:56, aiVerified:true, aiScore:81,
+      aiNote:'المعلومات الاقتصادية موثوقة ومتسقة مع بيانات الأسواق.',
+      createdAt: new Date(Date.now()-4*86400000).toISOString()
+    },
+    {
+      id:'demo_5',
+      title:'مهرجان الجزائر الدولي للموسيقى يعود بنسخة استثنائية',
+      excerpt:'المهرجان يستقطب فنانين من 20 دولة في دورة تاريخية بالعاصمة',
+      category:'ثقافة',
+      imageUrl:'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=75',
+      content:'يعود مهرجان الجزائر الدولي للموسيقى هذا الصيف بنسخة استثنائية تجمع فنانين من أكثر من عشرين دولة على خشبة واحدة في قلب العاصمة الجزائرية.\n\nيضم برنامج المهرجان أمسيات غنائية متنوعة تمزج بين الموسيقى الأندلسية والطرب والريڤي والموسيقى المعاصرة، لتلبية أذواق جميع فئات الجمهور.\n\nتستمر فعاليات المهرجان على مدى أسبوعين كاملين، وتُقام في المسرح الوطني الجزائري وعدد من الساحات الكبرى.',
+      authorId:'system', authorName:'قسم الثقافة',
+      views:78, aiVerified:true, aiScore:89,
+      aiNote:'حدث ثقافي موثق ومعلوماته دقيقة.',
+      createdAt: new Date(Date.now()-5*86400000).toISOString()
+    }
+  ]);
+}
+
+// ==================== STATE ====================
+let CU = null;
+let curCat = 'الكل';
+let editId = null;
+let vResult = null;
+
+// ==================== UTILS ====================
+function $(id){ return document.getElementById(id); }
+function val(id){ return ($(id) && $(id).value) ? $(id).value.trim() : ''; }
+function showErr(el, msg){ el.textContent = msg; el.style.display = 'block'; }
+function hideEl(el){ el.style.display = 'none'; }
+
+function fmtDate(iso){
+  try{ return new Date(iso).toLocaleDateString('ar-DZ',{year:'numeric',month:'long',day:'numeric'}); }
+  catch(e){ return ''; }
+}
+function emoji(cat){
+  return {سياسة:'🏛️',رياضة:'⚽',ثقافة:'🎭',تكنولوجيا:'💻',اقتصاد:'📈'}[cat] || '📰';
+}
+function makeId(){ return 'a_' + Date.now() + '_' + Math.random().toString(36).slice(2,7); }
+
+// ==================== NAVBAR ====================
+function updateNav(){
+  CU = getCurrentUser();
+  if(CU){
+    $('nav-auth').classList.add('hidden');
+    $('nav-user').classList.remove('hidden');
+    $('nav-uname').textContent = CU.name;
+    if(CU.role === 'journalist') $('nl-dash').classList.remove('hidden');
+    else $('nl-dash').classList.add('hidden');
+  } else {
+    $('nav-auth').classList.remove('hidden');
+    $('nav-user').classList.add('hidden');
+    $('nl-dash').classList.add('hidden');
+  }
+}
+
+// ==================== ROUTING ====================
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
+  $('pg-' + name).classList.add('on');
+  window.scrollTo(0,0);
+}
+function goHome(){ showPage('home'); }
+function showSignup(){ showPage('signup'); }
+function showSignin(){ showPage('signin'); }
+function showFeed(){ renderFeed(); showPage('feed'); }
+function showDash(){
+  CU = getCurrentUser();
+  if(!CU || CU.role !== 'journalist'){
+    alert('هذه الصفحة مخصصة للإعلاميين فقط.\nيمكنك تغيير دورك من صفحة "ملفي".');
+    return;
+  }
+  renderDash();
+  showPage('dash');
+}
+function showProfile(){
+  CU = getCurrentUser();
+  if(!CU){ showSignin(); return; }
+  renderProfile();
+  showPage('profile');
+}
+
+// ==================== AUTH ====================
+function doSignup(){
+  const name  = val('su-name');
+  const email = val('su-email');
+  const pass  = val('su-pass');
+  const errEl = $('su-err');
+  hideEl(errEl);
+
+  if(!name || !email || !pass){ showErr(errEl, 'يرجى ملء جميع الحقول'); return; }
+  if(pass.length < 6){ showErr(errEl, 'كلمة المرور يجب أن تكون 6 أحرف على الأقل'); return; }
+  if(!/\S+@\S+\.\S+/.test(email)){ showErr(errEl, 'يرجى إدخال بريد إلكتروني صحيح'); return; }
+
+  const users = getUsers();
+  if(users.find(u => u.email === email)){ showErr(errEl, 'هذا البريد الإلكتروني مستخدم مسبقاً'); return; }
+
+  const user = {
+    id: 'u_' + Date.now(),
+    name, email, password: pass,
+    role: 'visitor',
+    createdAt: new Date().toISOString()
+  };
+  users.push(user);
+  saveUsers(users);
+  setSession(user.id);
+  CU = user;
+
+  // clear fields
+  ['su-name','su-email','su-pass'].forEach(id => $(id).value = '');
+  updateNav();
+  showFeed();
+}
+
+function doSignin(){
+  const email = val('si-email');
+  const pass  = val('si-pass');
+  const errEl = $('si-err');
+  hideEl(errEl);
+
+  if(!email || !pass){ showErr(errEl, 'يرجى إدخال البريد وكلمة المرور'); return; }
+
+  const user = getUsers().find(u => u.email === email && u.password === pass);
+  if(!user){ showErr(errEl, 'البريد الإلكتروني أو كلمة المرور غير صحيحة'); return; }
+
+  setSession(user.id);
+  CU = user;
+  ['si-email','si-pass'].forEach(id => $(id).value = '');
+  updateNav();
+  showFeed();
+}
+
+function doLogout(){
+  setSession('');
+  CU = null;
+  updateNav();
+  showPage('home');
+}
+
+// ==================== FEED ====================
+function setCat(btn){
+  document.querySelectorAll('.cb').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  curCat = btn.dataset.c;
+  renderFeed();
+}
+
+function renderFeed(){
+  const grid = $('art-grid');
+  const q = (($('search-q') && $('search-q').value) || '').toLowerCase();
+  let arts = getArticles();
+  if(curCat !== 'الكل') arts = arts.filter(a => a.category === curCat);
+  if(q) arts = arts.filter(a =>
+    a.title.toLowerCase().includes(q) ||
+    a.excerpt.toLowerCase().includes(q)
+  );
+  arts.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+  if(!arts.length){
+    grid.innerHTML = '<div class="no-items">لا توجد مقالات تطابق بحثك.</div>';
+    return;
+  }
+
+  grid.innerHTML = arts.map(a => {
+    let aiBadge = '';
+    if(a.aiScore != null){
+      const cls = a.aiScore >= 70 ? 'ai-ok' : a.aiScore >= 45 ? 'ai-mid' : 'ai-no';
+      const lbl = a.aiScore >= 70 ? '✓ موثّق' : a.aiScore >= 45 ? '⚠ مراجعة' : '✗ منخفض';
+      aiBadge = `<span class="ai-b ${cls}">${lbl}</span>`;
+    }
+    const imgHtml = a.imageUrl
+      ? `<div class="ac-img" style="padding:0"><img src="${escHtml(a.imageUrl)}" alt="" onerror="this.parentElement.innerHTML='${emoji(a.category)}'"></div>`
+      : `<div class="ac-img">${emoji(a.category)}</div>`;
+
+    return `
+      <div class="ac" onclick="showArticle('${escHtml(a.id)}')">
+        ${imgHtml}
+        <div class="ac-body">
+          <div class="ac-top">
+            <span class="ac-cat">${escHtml(a.category)}</span>
+            ${aiBadge}
+          </div>
+          <div class="ac-title">${escHtml(a.title)}</div>
+          <div class="ac-ex">${escHtml(a.excerpt)}</div>
+          <div class="ac-meta">
+            <span class="ac-author">${escHtml(a.authorName||'مستخدم')}</span>
+            <span>•</span>
+            <span>${fmtDate(a.createdAt)}</span>
+            <span>•</span>
+            <span>${a.views||0} قراءة</span>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// ==================== ARTICLE DETAIL ====================
+function showArticle(id){
+  const arts = getArticles();
+  const idx  = arts.findIndex(a => a.id === id);
+  if(idx === -1) return;
+
+  arts[idx].views = (arts[idx].views || 0) + 1;
+  saveArticles(arts);
+  const a = arts[idx];
+
+  // AI box
+  let aiBox = '';
+  if(a.aiScore != null){
+    const ok  = a.aiScore >= 70;
+    const mid = a.aiScore >= 45;
+    const boxCls = ok ? 'ai-box-ok' : mid ? 'ai-box-mid' : 'ai-box-low';
+    const col    = ok ? '#166534' : mid ? '#92400e' : '#9a3412';
+    aiBox = `
+      <div class="ai-box ${boxCls}">
+        <div class="ai-box-hdr">🤖 نتيجة التحقق بالذكاء الاصطناعي</div>
+        <span class="ai-box-score" style="color:${col}">${a.aiScore}%</span>
+        <span style="font-weight:700;color:${col};margin-right:.5rem">${ok?'موثوق':mid?'يحتاج مراجعة':'موثوقية منخفضة'}</span>
+        <div class="ai-box-note">${escHtml(a.aiNote||'')}</div>
+      </div>`;
+  }
+
+  const heroHtml = a.imageUrl
+    ? `<div class="ad-hero-wrap"><img src="${escHtml(a.imageUrl)}" alt="" onerror="this.style.display='none'"></div>`
+    : `<div class="ad-hero-wrap">${emoji(a.category)}</div>`;
+
+  $('art-detail').innerHTML = `
+    <button class="back-btn" onclick="showFeed()">← العودة للأخبار</button>
+    <span class="ad-cat">${escHtml(a.category)}</span>
+    <h1 class="ad-title">${escHtml(a.title)}</h1>
+    <div class="ad-ex">${escHtml(a.excerpt)}</div>
+    <div class="ad-meta">
+      <span class="ad-author">${escHtml(a.authorName||'مستخدم')}</span>
+      <span>•</span>
+      <span>${fmtDate(a.createdAt)}</span>
+      <span>•</span>
+      <span>${a.views} قراءة</span>
+    </div>
+    ${aiBox}
+    ${heroHtml}
+    <div class="ad-content">${escHtml(a.content)}</div>
+  `;
+  showPage('article');
+}
+
+// ==================== DASHBOARD ====================
+function renderDash(){
+  CU = getCurrentUser();
+  if(!CU) return;
+  const arts = getArticles().filter(a => a.authorId === CU.id);
+  const allUsers = getUsers();
+  const tv = arts.reduce((s,a) => s + (a.views||0), 0);
+
+  $('dash-stats').innerHTML = `
+    <div class="sc"><div class="sc-n">${arts.length}</div><div class="sc-l">مقال منشور</div></div>
+    <div class="sc"><div class="sc-n">${tv}</div><div class="sc-l">إجمالي القراءات</div></div>
+    <div class="sc"><div class="sc-n">${arts.filter(a=>a.aiVerified).length}</div><div class="sc-l">مقال موثّق AI</div></div>
+    <div class="sc"><div class="sc-n">${allUsers.length}</div><div class="sc-l">مستخدم مسجّل</div></div>
+  `;
+
+  if(!arts.length){
+    $('dash-list').innerHTML = '<div class="no-items">لا توجد مقالات بعد. اضغط "+ مقال جديد" للبدء.</div>';
+    return;
+  }
+
+  const sorted = [...arts].sort((a,b) => new Date(b.createdAt)-new Date(a.createdAt));
+  $('dash-list').innerHTML = sorted.map(a => `
+    <div class="art-row">
+      <div class="art-row-info">
+        <div class="art-row-t">${escHtml(a.title)}</div>
+        <div class="art-row-m">
+          ${escHtml(a.category)} &bull; ${fmtDate(a.createdAt)} &bull; ${a.views||0} قراءة
+          ${a.aiScore!=null?' &bull; AI: '+a.aiScore+'%':''}
+        </div>
+      </div>
+      <div class="art-row-acts">
+        <button class="btn-edit" onclick="openEditModal('${escHtml(a.id)}')">تعديل</button>
+        <button class="btn-del"  onclick="deleteArticle('${escHtml(a.id)}')">حذف</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function deleteArticle(id){
+  if(!confirm('هل أنت متأكد من حذف هذا المقال؟ لا يمكن التراجع.')) return;
+  saveArticles(getArticles().filter(a => a.id !== id));
+  renderDash();
+}
+
+// ==================== MODAL ====================
+function resetModal(){
+  ['m-title','m-excerpt','m-img','m-content'].forEach(id => $(id).value = '');
+  $('m-cat').value = 'سياسة';
+  hideEl($('m-err'));
+  $('vres').style.display = 'none';
+  $('vbtn').disabled = false;
+  $('vbtn').textContent = '🔍 فحص المحتوى';
+  vResult = null;
+}
+
+function openNewModal(){
+  editId = null;
+  $('modal-title-txt').textContent = 'إنشاء مقال جديد';
+  $('m-submit-btn').textContent = 'نشر المقال';
+  resetModal();
+  $('art-modal').classList.remove('hidden');
+}
+
+function openEditModal(id){
+  const a = getArticles().find(x => x.id === id);
+  if(!a) return;
+  editId = id;
+  vResult = (a.aiScore != null) ? {score: a.aiScore, note: a.aiNote} : null;
+  $('modal-title-txt').textContent = 'تعديل المقال';
+  $('m-submit-btn').textContent = 'حفظ التعديلات';
+  $('m-title').value   = a.title;
+  $('m-excerpt').value = a.excerpt;
+  $('m-img').value     = a.imageUrl || '';
+  $('m-content').value = a.content;
+  $('m-cat').value     = a.category;
+  hideEl($('m-err'));
+  $('vres').style.display = 'none';
+  $('vbtn').disabled = false;
+  $('vbtn').textContent = '🔍 فحص المحتوى';
+  $('art-modal').classList.remove('hidden');
+}
+
+function closeModal(){
+  $('art-modal').classList.add('hidden');
+  editId = null; vResult = null;
+}
+
+// ==================== AI VERIFY ====================
+async function runVerify(){
+  const title   = val('m-title');
+  const content = val('m-content');
+  if(!title || !content){
+    alert('يرجى إدخال العنوان والمحتوى أولاً قبل الفحص');
+    return;
+  }
+  const btn = $('vbtn');
+  const res = $('vres');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin spin-w"></span> جارٍ الفحص بـ AI...';
+  res.style.display = 'none';
+
+  try {
+    const r = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 350,
+        messages: [{
+          role: 'user',
+          content: `أنت محرر صحفي متخصص في التحقق من الأخبار.\nحلّل هذا المقال وقيّم موثوقيته:\n\nالعنوان: ${title}\nالمحتوى: ${content.slice(0,1200)}\n\nأجب بـ JSON فقط، بدون أي نص إضافي:\n{"score":85,"verdict":"موثوق","note":"سبب الحكم في جملة واحدة بالعربية"}`
+        }]
+      })
+    });
+    const d = await r.json();
+    const txt = (d.content?.[0]?.text || '').replace(/\`\`\`json|\`\`\`/g,'').trim();
+    vResult = JSON.parse(txt);
+  } catch(e){
+    vResult = { score:55, verdict:'غير محدد', note:'تعذّر التحقق الآن، يمكنك النشر وسيُراجَع لاحقاً' };
+  }
+
+  const ok  = vResult.score >= 70;
+  const mid = vResult.score >= 45;
+  const bg  = ok ? '#f0fff4' : mid ? '#fefce8' : '#fff1f2';
+  const col = ok ? '#166534' : mid ? '#92400e' : '#9a3412';
+  res.style.cssText = `background:${bg};color:${col};font-weight:600;display:block`;
+  res.innerHTML = `<strong>${vResult.score}% — ${vResult.verdict}</strong><br><span style="font-weight:400;font-size:.78rem">${vResult.note}</span>`;
+  btn.disabled = false;
+  btn.textContent = '🔄 إعادة الفحص';
+}
+
+// ==================== SUBMIT ARTICLE ====================
+function submitArticle(){
+  CU = getCurrentUser();
+  if(!CU){ alert('يجب تسجيل الدخول أولاً'); return; }
+
+  const title    = val('m-title');
+  const excerpt  = val('m-excerpt');
+  const content  = val('m-content');
+  const category = val('m-cat');
+  const imageUrl = val('m-img');
+  const errEl    = $('m-err');
+
+  if(!title || !excerpt || !content){
+    showErr(errEl, 'يرجى ملء الحقول المطلوبة: العنوان، الملخص، المحتوى');
+    return;
+  }
+
+  const btn = $('m-submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin spin-w"></span>';
+
+  const arts = getArticles();
+
+  if(editId){
+    const idx = arts.findIndex(a => a.id === editId);
+    if(idx !== -1){
+      arts[idx] = {
+        ...arts[idx],
+        title, excerpt, content, category, imageUrl,
+        aiVerified: vResult ? vResult.score >= 70 : arts[idx].aiVerified,
+        aiScore:    vResult ? vResult.score        : arts[idx].aiScore,
+        aiNote:     vResult ? vResult.note         : arts[idx].aiNote
+      };
+    }
+  } else {
+    arts.push({
+      id:         makeId(),
+      title, excerpt, content, category, imageUrl,
+      authorId:   CU.id,
+      authorName: CU.name,
+      views:      0,
+      aiVerified: vResult ? vResult.score >= 70 : false,
+      aiScore:    vResult ? vResult.score        : null,
+      aiNote:     vResult ? vResult.note         : '',
+      createdAt:  new Date().toISOString()
+    });
+  }
+
+  saveArticles(arts);
+  btn.disabled = false;
+  btn.textContent = editId ? 'حفظ التعديلات' : 'نشر المقال';
+  closeModal();
+  renderDash();
+}
+
+// ==================== PROFILE ====================
+function renderProfile(){
+  CU = getCurrentUser();
+  if(!CU) return;
+  $('prof-info').innerHTML = `
+    <div class="pinfo-item">
+      <label>الاسم</label>
+      <span>${escHtml(CU.name)}</span>
+    </div>
+    <div class="pinfo-item">
+      <label>البريد الإلكتروني</label>
+      <span style="font-size:.78rem;word-break:break-all">${escHtml(CU.email)}</span>
+    </div>
+    <div class="pinfo-item">
+      <label>الدور الحالي</label>
+      <span class="rbadge ${CU.role==='journalist'?'rbadge-j':'rbadge-v'}">${CU.role==='journalist'?'إعلامي':'زائر'}</span>
+    </div>
+    <div class="pinfo-item">
+      <label>تاريخ التسجيل</label>
+      <span>${fmtDate(CU.createdAt)}</span>
+    </div>
+  `;
+  $('role-sel').value = CU.role;
+  hideEl($('prof-ok'));
+}
+
+function saveProfile(){
+  CU = getCurrentUser();
+  if(!CU) return;
+  CU.role = $('role-sel').value;
+  updateUserInDB(CU);
+  setSession(CU.id);
+  updateNav();
+  renderProfile();
+  const ok = $('prof-ok');
+  ok.textContent = '✓ تم حفظ التغييرات بنجاح';
+  ok.style.display = 'block';
+  setTimeout(() => hideEl(ok), 3000);
+}
+
+// ==================== SECURITY UTIL ====================
+function escHtml(str){
+  if(!str) return '';
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+// ==================== INIT ====================
+seedIfEmpty();
+updateNav();
+</script>
+</body>
+</html>
